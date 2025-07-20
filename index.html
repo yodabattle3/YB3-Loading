@@ -1,228 +1,213 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YB3 Executor - Loading</title>
-    <style>
-        :root {
-            --primary: #76b5ff;
-            --secondary: #9c88ff;
-            --dark: #0f172a;
-            --darker: #020617;
-            --light: #e2e8f0;
-        }
-        
-        body {
-            margin: 0;
-            padding: 0;
-            background: var(--darker);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: white;
-            overflow: hidden;
-        }
-        
-        .loading-container {
-            text-align: center;
-            max-width: 400px;
-            width: 90%;
-        }
-        
-        .logo {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 30px;
-            position: relative;
-        }
-        
-        .hexagon {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(145deg, var(--dark), var(--primary));
-            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: 2px solid var(--primary);
-            box-shadow: 0 0 30px rgba(118, 181, 255, 0.3);
-        }
-        
-        .logo-text {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: white;
-            z-index: 2;
-        }
-        
-        .loading-animation {
-            display: flex;
-            justify-content: center;
-            margin: 30px 0;
-        }
-        
-        .dot {
-            width: 12px;
-            height: 12px;
-            background-color: var(--primary);
-            border-radius: 50%;
-            margin: 0 5px;
-            animation: bounce 1.5s infinite ease-in-out;
-        }
-        
-        .dot:nth-child(1) {
-            animation-delay: 0s;
-        }
-        
-        .dot:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-        
-        .dot:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-        
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-15px);
-            }
-        }
-        
-        .progress-container {
-            width: 100%;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 3px;
-            overflow: hidden;
-            margin: 20px 0;
-        }
-        
-        .progress-bar {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            border-radius: 3px;
-            transition: width 0.3s ease;
-            animation: progress-animation 2s infinite ease-in-out;
-        }
-        
-        @keyframes progress-animation {
-            0% {
-                width: 0%;
-                margin-left: 0;
-            }
-            50% {
-                width: 100%;
-                margin-left: 0;
-            }
-            100% {
-                width: 0%;
-                margin-left: 100%;
-            }
-        }
-        
-        .loading-text {
-            font-size: 1.2rem;
-            margin-top: 20px;
-            color: var(--light);
-        }
-        
-        .status-text {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.6);
-            margin-top: 10px;
-        }
-        
-        /* For the "loading complete" state */
-        .complete .hexagon {
-            animation: pulse 1.5s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-                box-shadow: 0 0 30px rgba(118, 181, 255, 0.3);
-            }
-            50% {
-                transform: scale(1.05);
-                box-shadow: 0 0 50px rgba(118, 181, 255, 0.5);
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>YB3 Executor - Loading</title>
+  <style>
+    :root {
+      --primary: #76b5ff;
+      --secondary: #9c88ff;
+      --dark: #0f172a;
+      --darker: #1a1a1a; /* Changed to a lighter black */
+      --light: #e2e8f0;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--darker); /* Lighter black background */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: white;
+      overflow: hidden;
+    }
+
+    .loading-container {
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+    }
+
+    .logo {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 30px;
+      position: relative;
+    }
+
+    .hexagon {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: black; /* Changed to solid black */
+      clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 2px solid #000; /* Border also black */
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.3); /* Adjusted glow to match black */
+    }
+
+    .logo-text {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: white;
+      z-index: 2;
+    }
+
+    .loading-animation {
+      display: flex;
+      justify-content: center;
+      margin: 30px 0;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      background-color: var(--primary);
+      border-radius: 50%;
+      margin: 0 5px;
+      animation: bounce 1.5s infinite ease-in-out;
+    }
+
+    .dot:nth-child(1) {
+      animation-delay: 0s;
+    }
+
+    .dot:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .dot:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+
+    .progress-container {
+      width: 100%;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 3px;
+      overflow: hidden;
+      margin: 20px 0;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 3px;
+      transition: width 0.3s ease;
+      animation: progress-animation 2s infinite ease-in-out;
+    }
+
+    @keyframes progress-animation {
+      0% {
+        width: 0%;
+        margin-left: 0;
+      }
+      50% {
+        width: 100%;
+        margin-left: 0;
+      }
+      100% {
+        width: 0%;
+        margin-left: 100%;
+      }
+    }
+
+    .loading-text {
+      font-size: 1.2rem;
+      margin-top: 20px;
+      color: var(--light);
+    }
+
+    .status-text {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.6);
+      margin-top: 10px;
+    }
+
+    .complete .hexagon {
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+      }
+      50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="loading-container">
-        <div class="logo">
-            <div class="hexagon">
-                <span class="logo-text">YB3</span>
-            </div>
-        </div>
-        
-        <div class="loading-animation">
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-        </div>
-        
-        <div class="progress-container">
-            <div class="progress-bar"></div>
-        </div>
-        
-        <div class="loading-text">Initializing Executor</div>
-        <div class="status-text">Loading components...</div>
+  <div class="loading-container">
+    <div class="logo">
+      <div class="hexagon">
+        <span class="logo-text">YB3</span>
+      </div>
     </div>
 
-    <script>
-        // Simulate progress updates (replace with real progress events)
-        const loadingText = document.querySelector('.loading-text');
-        const statusText = document.querySelector('.status-text');
-        const progressBar = document.querySelector('.progress-bar');
-        const container = document.querySelector('.loading-container');
-        
-        const steps = [
-            { text: "Initializing Executor", status: "Loading components..." },
-            { text: "Loading Modules", status: "Loading CEF engine..." },
-            { text: "Preparing Interface", status: "Almost ready..." },
-            { text: "Ready to Launch", status: "Starting application..." }
-        ];
-        
-        let currentStep = 0;
-        
-        function updateProgress() {
-            if (currentStep < steps.length) {
-                loadingText.textContent = steps[currentStep].text;
-                statusText.textContent = steps[currentStep].status;
-                progressBar.style.width = `${(currentStep + 1) * 25}%`;
-                currentStep++;
-                setTimeout(updateProgress, 1500);
-            } else {
-                // Loading complete - add complete class for pulse effect
-                container.classList.add('complete');
-                loadingText.textContent = "Launching YB3 Executor";
-                statusText.textContent = "Ready to use!";
-                
-                // In a real app, you would trigger the main app here
-                // setTimeout(() => { window.location.href = "main.html"; }, 1000);
-            }
-        }
-        
-        // Start the progress simulation
-        setTimeout(updateProgress, 500);
-        
-        // For real implementation, you would listen to progress events from your app:
-        // window.addEventListener('progress-update', (e) => {
-        //     const { progress, message, status } = e.detail;
-        //     progressBar.style.width = `${progress}%`;
-        //     loadingText.textContent = message;
-        //     statusText.textContent = status;
-        // });
-    </script>
+    <div class="loading-animation">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+
+    <div class="progress-container">
+      <div class="progress-bar"></div>
+    </div>
+
+    <div class="loading-text">Initializing Executor</div>
+    <div class="status-text">Loading components...</div>
+  </div>
+
+  <script>
+    const loadingText = document.querySelector('.loading-text');
+    const statusText = document.querySelector('.status-text');
+    const progressBar = document.querySelector('.progress-bar');
+    const container = document.querySelector('.loading-container');
+
+    const steps = [
+      { text: "Initializing Executor", status: "Loading components..." },
+      { text: "Loading Modules", status: "Loading CEF engine..." },
+      { text: "Preparing Interface", status: "Almost ready..." },
+      { text: "Ready to Launch", status: "Starting application..." }
+    ];
+
+    let currentStep = 0;
+
+    function updateProgress() {
+      if (currentStep < steps.length) {
+        loadingText.textContent = steps[currentStep].text;
+        statusText.textContent = steps[currentStep].status;
+        progressBar.style.width = `${(currentStep + 1) * 25}%`;
+        currentStep++;
+        setTimeout(updateProgress, 1500);
+      } else {
+        container.classList.add('complete');
+        loadingText.textContent = "Launching YB3 Executor";
+        statusText.textContent = "Ready to use!";
+      }
+    }
+
+    setTimeout(updateProgress, 500);
+  </script>
 </body>
 </html>
